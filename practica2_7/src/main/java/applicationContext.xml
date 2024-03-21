@@ -6,9 +6,20 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd">
-
-<context:component-scan base-package="com.cursospring.practica2_7"></context:component-scan>
+                           
+        <bean id="miFactura" class="com.cursospring.practica2_7.data.Factura"></bean>
 		
+		<!-- ID con CONSTRUCTOR (Ejemplo Coche)-->
+		<bean id="miVehiculo" class="com.cursospring.practica2_7.data.Coche">
+			<constructor-arg ref="miFactura"></constructor-arg>
+		</bean>
 		
+		<!-- ID con SETTER (Ejemplo Moto)-->
+		<bean id="miVehiculoMoto" class="com.cursospring.practica2_7.data.Moto">
+			<property name="facturaNueva" ref="miFactura"></property>
+			
+			<!-- A traves de esta propiedad, inyectaremos datos directamente en nuestro objeto Moto-->
+			<property name="combustible" value="Gasolina"></property>
+		</bean>
 		
 </beans>
